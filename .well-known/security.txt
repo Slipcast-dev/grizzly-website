@@ -1,0 +1,5 @@
+Contact: https://github.com/Slipcast-dev/grizzly-website/security/advisories/new
+Expires: 2027-10-27T00:00:00Z
+Preferred-Languages: ru, en
+Canonical: https://slipcast-dev.github.io/grizzly-website/.well-known/security.txt
+Policy: https://github.com/Slipcast-dev/grizzly-website/blob/main/SECURITY.md
