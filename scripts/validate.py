@@ -66,6 +66,9 @@ def main() -> None:
         assert "pull_request_target" not in content
         for action in re.findall(r"uses:\s*([^\s#]+)", content):
             assert re.fullmatch(r"[\w.-]+/[\w./-]+@[0-9a-f]{40}", action), action
+    pages = (ROOT / ".github/workflows/pages.yml").read_text()
+    assert "path: _site" in pages, "Публиковать можно только подготовленный артефакт"
+    assert "include-hidden-files: true" in pages, "security.txt не попадёт в Pages"
     print(f"Проверены HTML, CSP, {len(page.urls)} URL и SHA всех Actions")
 
 
