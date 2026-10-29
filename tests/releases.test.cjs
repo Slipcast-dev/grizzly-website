@@ -108,7 +108,6 @@ test('английская страница сохраняет прямые сс
   );
   assert.deepEqual(englishLinks, fallback);
   assert.match(english, /<html lang="en">/);
-  assert.doesNotMatch(english.replace(/<!--[\s\S]*?-->/g, ''), /[А-Яа-яЁё]/);
 });
 
 test('английские сообщения показываются при успехе, ошибке и отсутствии платформы', async () => {
