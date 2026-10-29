@@ -1,8 +1,8 @@
 blank_issues_enabled: false
 contact_links:
-  - name: Сообщить об уязвимости приватно
+  - name: Report a vulnerability privately / Сообщить об уязвимости приватно
     url: https://github.com/Slipcast-dev/grizzly-website/security/advisories/new
-    about: Не публикуйте детали уязвимостей в общедоступных issues.
-  - name: Ошибка в приложении Grizzly
+    about: Do not disclose vulnerabilities in public issues. Не публикуйте уязвимости в issues.
+  - name: Grizzly app issue / Ошибка приложения Grizzly
     url: https://github.com/Slipcast-dev/Grizzly/issues
-    about: Этот репозиторий относится только к сайту.
+    about: This repository covers only the website. Этот репозиторий относится только к сайту.

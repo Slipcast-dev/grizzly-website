@@ -14,7 +14,7 @@ const fallback = Object.fromEntries(
 const prefix = 'https://github.com/Slipcast-dev/Grizzly/releases/download/v1.0/';
 
 /** Запускает настоящий скрипт в минимальном DOM без доступа к сети. */
-async function run(fetchImplementation) {
+async function run(fetchImplementation, language = 'ru') {
   const links = ['arm64', 'intel', 'windows'].map((platform) => ({
     dataset: { platform }, href: fallback[platform],
   }));
@@ -22,6 +22,7 @@ async function run(fetchImplementation) {
   let timeoutCleared = false;
   const context = vm.createContext({
     document: {
+      documentElement: { lang: language },
       querySelectorAll: (selector) => selector === '.download-link' ? links : [],
       getElementById: () => status,
     },
@@ -97,4 +98,29 @@ test('HTML сразу содержит прямые ссылки для трёх
     assert.ok(url.pathname.startsWith('/Slipcast-dev/Grizzly/releases/download/'));
     assert.ok(url.pathname.endsWith(platform === 'windows' ? '-portable.exe' : platform === 'arm64' ? '-arm64.dmg' : '-x64.dmg'));
   }
+});
+
+test('английская страница сохраняет прямые ссылки тех же платформ', () => {
+  const english = fs.readFileSync(path.join(__dirname, '..', 'en.html'), 'utf8');
+  const englishLinks = Object.fromEntries(
+    [...english.matchAll(/data-platform="([^"]+)" href="([^"]+)"/g)]
+      .map((match) => [match[1], match[2]]),
+  );
+  assert.deepEqual(englishLinks, fallback);
+  assert.match(english, /<html lang="en">/);
+  assert.doesNotMatch(english.replace(/<!--[\s\S]*?-->/g, ''), /[А-Яа-яЁё]/);
+});
+
+test('английские сообщения показываются при успехе, ошибке и отсутствии платформы', async () => {
+  const success = await run(response([
+    { name: 'Grizzly-arm64.dmg', browser_download_url: prefix + 'Grizzly-arm64.dmg' },
+  ]), 'en');
+  assert.match(success.status.textContent, /Verified direct downloads/);
+  assert.doesNotMatch(success.status.textContent, /[А-Яа-яЁё]/);
+  const failure = await run(async () => { throw new Error('offline'); }, 'en');
+  assert.match(failure.status.textContent, /Could not check/);
+  assert.ok(failure.links.every((link) => link.href === fallback[link.dataset.platform]));
+  const full = await run(response(['Grizzly-arm64.dmg', 'Grizzly-x64.dmg', 'Grizzly-portable.exe']
+    .map((name) => ({ name, browser_download_url: prefix + name }))), 'en');
+  assert.match(full.status.textContent, /Download directly/);
 });
