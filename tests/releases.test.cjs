@@ -6,13 +6,17 @@ const fs = require('node:fs');
 const vm = require('node:vm');
 const path = require('node:path');
 const source = fs.readFileSync(path.join(__dirname, '..', 'app.js'), 'utf8');
-const fallback = 'https://github.com/Slipcast-dev/Grizzly/releases/latest';
+const html = fs.readFileSync(path.join(__dirname, '..', 'index.html'), 'utf8');
+const fallback = Object.fromEntries(
+  [...html.matchAll(/data-platform="([^"]+)" href="([^"]+)"/g)]
+    .map((match) => [match[1], match[2]]),
+);
 const prefix = 'https://github.com/Slipcast-dev/Grizzly/releases/download/v1.0/';
 
 /** Запускает настоящий скрипт в минимальном DOM без доступа к сети. */
 async function run(fetchImplementation) {
   const links = ['arm64', 'intel', 'windows'].map((platform) => ({
-    dataset: { platform }, href: fallback,
+    dataset: { platform }, href: fallback[platform],
   }));
   const status = { textContent: '' };
   let timeoutCleared = false;
@@ -56,7 +60,7 @@ test('ошибки сети, HTTP и повреждённый ответ сох�
     async () => ({ ok: true, json: async () => ({ assets: null }) }),
   ]) {
     const { links, status } = await run(fetcher);
-    assert.ok(links.every((link) => link.href === fallback));
+    assert.ok(links.every((link) => link.href === fallback[link.dataset.platform]));
     assert.match(status.textContent, /Не удалось/);
   }
 });
@@ -71,7 +75,7 @@ test('подмена домена, репозитория, протокола и
     'javascript:alert(1)',
   ]) {
     const { links } = await run(response([{ name: 'Grizzly-arm64.dmg', browser_download_url: url }]));
-    assert.ok(links.every((link) => link.href === fallback), url);
+    assert.ok(links.every((link) => link.href === fallback[link.dataset.platform]), url);
   }
 });
 
@@ -79,7 +83,18 @@ test('отсутствующая платформа сохраняет fallback,
   const name = 'Grizzly-arm64.dmg';
   const { links, status } = await run(response([{ name, browser_download_url: prefix + name }]));
   assert.equal(links[0].href, prefix + name);
-  assert.equal(links[1].href, fallback);
-  assert.equal(links[2].href, fallback);
-  assert.match(status.textContent, /недоступных сборок/);
+  assert.equal(links[1].href, fallback.intel);
+  assert.equal(links[2].href, fallback.windows);
+  assert.match(status.textContent, /сохранены прямые ссылки/);
+});
+
+
+test('HTML сразу содержит прямые ссылки для трёх платформ без выполнения JavaScript', () => {
+  assert.deepEqual(Object.keys(fallback).sort(), ['arm64', 'intel', 'windows']);
+  for (const [platform, href] of Object.entries(fallback)) {
+    const url = new URL(href);
+    assert.equal(url.origin, 'https://github.com');
+    assert.ok(url.pathname.startsWith('/Slipcast-dev/Grizzly/releases/download/'));
+    assert.ok(url.pathname.endsWith(platform === 'windows' ? '-portable.exe' : platform === 'arm64' ? '-arm64.dmg' : '-x64.dmg'));
+  }
 });
