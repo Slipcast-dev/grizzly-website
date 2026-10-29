@@ -18,6 +18,7 @@ for (const button of modeButtons) {
 /** Получает актуальные установщики; при ошибке сохраняет прямые ссылки из HTML. */
 async function loadDownloads() {
   const status = document.getElementById('release-status');
+  const english = document.documentElement.lang === 'en';
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 8000);
   const patterns = {
@@ -50,10 +51,12 @@ async function loadDownloads() {
       found += 1;
     }
     status.textContent = found === 3
-      ? `${release.tag_name} · Загрузка напрямую из GitHub Releases`
-      : `${release.tag_name} · Для остальных платформ сохранены прямые ссылки на проверенные сборки.`;
+      ? (english ? `${release.tag_name} · Download directly from GitHub Releases` : `${release.tag_name} · Загрузка напрямую из GitHub Releases`)
+      : (english ? `${release.tag_name} · Verified direct downloads remain available for other platforms.` : `${release.tag_name} · Для остальных платформ сохранены прямые ссылки на проверенные сборки.`);
   } catch {
-    status.textContent = 'Не удалось проверить новую версию. Доступна прямая загрузка проверенных сборок.';
+    status.textContent = english
+      ? 'Could not check for a newer release. Verified installers are still available to download directly.'
+      : 'Не удалось проверить новую версию. Доступна прямая загрузка проверенных сборок.';
   } finally {
     clearTimeout(timeout);
   }

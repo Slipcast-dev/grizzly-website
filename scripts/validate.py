@@ -16,9 +16,15 @@ class PageValidator(HTMLParser):
         self.urls: list[str] = []
         self.csp = ""
         self.referrer = ""
+        self.text: list[str] = []
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
         values = dict(attrs)
+        for name in ("alt", "title", "aria-label", "placeholder"):
+            if values.get(name):
+                self.text.append(values[name])
+        if tag == "meta" and values.get("content"):
+            self.text.append(values["content"])
         identifier = values.get("id")
         if identifier:
             assert identifier not in self.ids, f"Повтор id: {identifier}"
@@ -40,11 +46,21 @@ class PageValidator(HTMLParser):
         if values.get("target") == "_blank":
             assert {"noopener", "noreferrer"} <= set(values.get("rel", "").split())
 
+    def handle_data(self, data: str) -> None:
+        """Собирает текст через HTML-парсер, не затрагивая комментарии."""
+        self.text.append(data)
 
-def main() -> None:
-    """Проверяет страницу и закрепление внешних Actions полными SHA."""
+
+def check_page(filename: str, language: str) -> PageValidator:
+    """Проверяет каждую языковую страницу и локальные ресурсы."""
     page = PageValidator()
-    page.feed((ROOT / "index.html").read_text())
+    source = (ROOT / filename).read_text()
+    assert f'<html lang="{language}">' in source
+    assert 'src="language.js"' in source
+    assert 'hreflang="ru"' in source and 'hreflang="en"' in source
+    page.feed(source)
+    if language == "en":
+        assert not re.search(r"[А-Яа-яЁё]", " ".join(page.text)), "Непереведённый текст EN"
     for url in page.urls:
         parsed = urlsplit(url)
         if parsed.scheme:
@@ -61,6 +77,20 @@ def main() -> None:
         assert directive in page.csp, f"Нет CSP: {directive}"
     assert "unsafe-" not in page.csp
     assert page.referrer == "no-referrer"
+    return page
+
+
+def main() -> None:
+    """Проверяет обе страницы, документацию и закрепление Actions полными SHA."""
+    russian = check_page("index.html", "ru")
+    english = check_page("en.html", "en")
+    assert russian.ids == english.ids, "Якоря двух языковых версий должны совпадать"
+    for document in ROOT.glob("*.md"):
+        for link in re.findall(r"\]\(([^)\s]+)\)", document.read_text()):
+            parsed = urlsplit(link)
+            if not parsed.scheme and parsed.path:
+                target = (document.parent / parsed.path).resolve()
+                assert target.is_relative_to(ROOT) and target.is_file(), f"{document.name}: {link}"
     for workflow in (ROOT / ".github/workflows").glob("*.yml"):
         content = workflow.read_text()
         assert "pull_request_target" not in content
@@ -69,7 +99,7 @@ def main() -> None:
     pages = (ROOT / ".github/workflows/pages.yml").read_text()
     assert "path: _site" in pages, "Публиковать можно только подготовленный артефакт"
     assert "include-hidden-files: true" in pages, "security.txt не попадёт в Pages"
-    print(f"Проверены HTML, CSP, {len(page.urls)} URL и SHA всех Actions")
+    print(f"Проверены HTML, CSP, {len(russian.urls) + len(english.urls)} URL двух страниц и SHA всех Actions")
 
 
 if __name__ == "__main__":

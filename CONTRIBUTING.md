@@ -1,12 +1,16 @@
-# Участие в разработке
+# Contributing
 
-Предложения и исправления приветствуются. Для обычных ошибок используйте issues, для уязвимостей — [SECURITY.md](SECURITY.md).
+**English** · [Русский](CONTRIBUTING.ru.md)
 
-1. Создайте ветку или fork от `main`.
-2. Внесите минимальное изменение. Сайт остаётся статическим, без добавления зависимостей без необходимости.
-3. Запустите команды проверки из README и проверьте страницу в узком и широком окне, клавиатурную навигацию и оба режима демонстрации.
-4. Откройте pull request: опишите проблему, результат и выполненные проверки. Для визуальных изменений приложите скриншот без личных данных.
+Ideas and fixes are welcome. Use issues for ordinary bugs and [SECURITY.md](SECURITY.md) for vulnerabilities. Issue forms are available in English and Russian.
 
-Не добавляйте токены, `.env`, персональные данные, исполняемые установщики и файлы приложения. Установщики распространяются из релизов основного проекта. Не изменяйте permissions workflows без обоснования. Actions закрепляются полными SHA; не используйте `pull_request_target` для исполнения кода участников.
+1. Create a branch or fork from `main`.
+2. Keep changes focused. The site stays static; add dependencies only when necessary.
+3. Update `index.html` and `en.html`, dynamic messages and both documentation versions together. Run the commands in [README](README.md); check both languages at narrow and wide widths, keyboard navigation, RU/EN switching, automatic language selection and both demo modes.
+4. Open a pull request describing the problem, result and checks. For visual changes include screenshots without personal data.
 
-Перед слиянием должны пройти обязательные проверки и быть разрешены обсуждения. Вклад распространяется под лицензией MIT проекта. Соблюдайте [кодекс поведения](CODE_OF_CONDUCT.md).
+Do not add tokens, `.env` files, personal data, executable installers or app files. Installers belong in the app repository's releases. When updating fallback downloads, keep both pages' URLs identical for each platform and verify the actual asset names.
+
+Do not change workflow permissions without justification. Pin Actions to full SHAs; never run contributor code through `pull_request_target`. Language selection must keep working when localStorage is blocked and must never redirect to an arbitrary URL.
+
+Required checks and discussion resolution must complete before merge. Contributions use the project's MIT license. Follow the [code of conduct](CODE_OF_CONDUCT.md).

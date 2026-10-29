@@ -1,35 +1,39 @@
-# Политика безопасности
+# Security policy
 
-## Поддержка
+**English** · [Русский](SECURITY.ru.md)
 
-Исправления безопасности выпускаются для текущей версии ветки `main`, опубликованной на GitHub Pages. Эта политика относится к сайту; у приложения [Grizzly](https://github.com/Slipcast-dev/Grizzly) своя политика.
+## Supported version
 
-## Сообщить об уязвимости
+Security fixes target the current `main` version deployed to GitHub Pages. This policy covers the website; the [Grizzly app](https://github.com/Slipcast-dev/Grizzly) has its own security policy.
 
-Не публикуйте секреты или детали эксплуатации в issues. Используйте [приватное сообщение об уязвимости](https://github.com/Slipcast-dev/grizzly-website/security/advisories/new).
+## Reporting a vulnerability
 
-Укажите URL, commit SHA при наличии, браузер, шаги воспроизведения и ожидаемое влияние. Не обращайтесь к чужим данным и не проводите нагрузочные атаки. Срок ответа не гарантируется: проект поддерживается владельцем в доступное время.
+Do not publish secrets or exploitation details in public issues. Use [private vulnerability reporting](https://github.com/Slipcast-dev/grizzly-website/security/advisories/new).
 
-## Модель безопасности
+Include the URL, commit SHA if known, browser, reproduction steps and expected impact. Do not access other people's data or run load attacks. No response time is guaranteed; the project is maintained as the owner's time permits.
 
-- Статический сайт без серверной логики, авторизации, секретов и приёма файлов.
-- Единственный API — публичный список релизов `Slipcast-dev/Grizzly`; таймаут 8 секунд, без credentials и переходов по редиректам.
-- Прямые резервные ссылки на проверенные установщики встроены в HTML и сохраняются при недоступности API.
-- Ответ API отображается через `textContent`. Ссылки на установщики ограничены HTTPS, доменом `github.com` и точным путём релизов приложения; URL с учётными данными отвергаются.
-- CSP разрешает локальные скрипты, стили и изображения и соединения только с GitHub API; inline scripts и eval не разрешены. Referrer Policy: `no-referrer`.
-- В артефакт публикации входят только `index.html`, `styles.css`, `app.js`, иконка, `.nojekyll` и `security.txt`.
-- CI проверяет структуру страницы, небезопасные конструкции, закрепление Actions и логику GitHub-загрузок; CodeQL анализирует JavaScript.
-- Secret scanning и push protection — дополнительная защита. Они не гарантируют обнаружение всех секретов; перед публикацией проверяйте diff.
+## Security model
 
-## Ограничения хостинга
+- Static site without server-side logic, authentication, secrets or file uploads.
+- The only API is the public release list for `Slipcast-dev/Grizzly`, with an eight-second timeout, omitted credentials and no redirect following.
+- Verified direct installer links are embedded in both HTML pages and remain available when the API fails.
+- API text is displayed using `textContent`. Installer URLs must use HTTPS, `github.com` and the exact app release path. URLs containing credentials are rejected.
+- CSP permits local scripts, styles and images, with API connections only to GitHub. Inline scripts and eval are not allowed. Referrer Policy is `no-referrer`.
+- Publication includes only eight allowlisted resources: `index.html`, `en.html`, `styles.css`, `app.js`, `language.js`, `assets/icon.png`, `.nojekyll` and `.well-known/security.txt`.
+- Language selection can redirect only to fixed RU/EN paths on the same site. URL and stored preferences accept only `ru`/`en`; unsupported values are ignored.
+- localStorage contains only the manual `grizzly-language` preference. Storage denial does not break the site. There are no website cookies or visitor tracking.
+- CI checks both language pages, language selection and storage denial, unsafe constructs, Actions SHA pins and GitHub download handling. CodeQL analyzes JavaScript.
+- Secret scanning and push protection provide additional defenses, not a guarantee that all secrets will be detected. Review each diff before publishing.
 
-GitHub Pages не поддерживает пользовательские HTTP-заголовки. CSP через meta не поддерживает `frame-ancestors`; запрет встраивания страницы не обеспечен. HSTS и параметры TLS управляются GitHub. Внешний scanner и полноценный penetration test в рамках настройки не выполнялись.
+## Hosting limitations
 
-## Действия при инциденте
+GitHub Pages does not support arbitrary custom response headers. A meta CSP cannot enforce `frame-ancestors`, so framing is not blocked by this policy. GitHub manages HSTS and TLS. An external security scanner and a full penetration test have not been performed as part of this setup.
 
-1. При утечке секрета немедленно отозвать и заменить его в исходной системе; удаление из Git не заменяет отзыв.
-2. При компрометации workflow остановить публикацию, отозвать доступ атакующего и проверить Actions/deployments и изменения.
-3. Исправить проблему через pull request, дождаться проверок и проверить публичный сайт.
-4. При необходимости опубликовать security advisory без чувствительных данных.
+## Incident response
 
-Периодически проверяйте security alerts, обновления Dependabot и доступ к репозиторию. Для аккаунта владельца рекомендуется 2FA/passkey; настройки аккаунта не изменяются этим репозиторием.
+1. Revoke and replace a leaked secret in its source system immediately; removing it from Git is not a substitute.
+2. For compromised workflows, stop deployments, revoke attacker access, and inspect Actions, deployments and changes.
+3. Fix through a pull request, wait for checks and verify the public site.
+4. Publish a security advisory without sensitive details when appropriate.
+
+Review security alerts, Dependabot updates and repository access periodically. Use 2FA/passkeys for the owner account; repository configuration does not change account settings.
