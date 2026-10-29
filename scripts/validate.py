@@ -16,9 +16,15 @@ class PageValidator(HTMLParser):
         self.urls: list[str] = []
         self.csp = ""
         self.referrer = ""
+        self.text: list[str] = []
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
         values = dict(attrs)
+        for name in ("alt", "title", "aria-label", "placeholder"):
+            if values.get(name):
+                self.text.append(values[name])
+        if tag == "meta" and values.get("content"):
+            self.text.append(values["content"])
         identifier = values.get("id")
         if identifier:
             assert identifier not in self.ids, f"Повтор id: {identifier}"
@@ -40,6 +46,10 @@ class PageValidator(HTMLParser):
         if values.get("target") == "_blank":
             assert {"noopener", "noreferrer"} <= set(values.get("rel", "").split())
 
+    def handle_data(self, data: str) -> None:
+        """Собирает текст через HTML-парсер, не затрагивая комментарии."""
+        self.text.append(data)
+
 
 def check_page(filename: str, language: str) -> PageValidator:
     """Проверяет каждую языковую страницу и локальные ресурсы."""
@@ -49,6 +59,8 @@ def check_page(filename: str, language: str) -> PageValidator:
     assert 'src="language.js"' in source
     assert 'hreflang="ru"' in source and 'hreflang="en"' in source
     page.feed(source)
+    if language == "en":
+        assert not re.search(r"[А-Яа-яЁё]", " ".join(page.text)), "Непереведённый текст EN"
     for url in page.urls:
         parsed = urlsplit(url)
         if parsed.scheme:
