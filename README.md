@@ -2,6 +2,8 @@
 
 **English** · [Русский](README.ru.md)
 
+[![Grizzly Website — bilingual pages, direct macOS and Windows downloads, open source](docs/banners/cover-en.svg)](https://slipcast-dev.github.io/grizzly-website/)
+
 [![Validate](https://github.com/Slipcast-dev/grizzly-website/actions/workflows/validate.yml/badge.svg)](https://github.com/Slipcast-dev/grizzly-website/actions/workflows/validate.yml)
 [![CodeQL](https://github.com/Slipcast-dev/grizzly-website/actions/workflows/codeql.yml/badge.svg)](https://github.com/Slipcast-dev/grizzly-website/actions/workflows/codeql.yml)
 [![MIT](https://img.shields.io/badge/license-MIT-86c9b2)](LICENSE)
@@ -12,6 +14,8 @@ A bilingual Russian/English website for **Grizzly**, the offline Markdown and te
 
 ## Features
 
+![Website features: two languages, direct installer downloads, a static MIT-licensed site without accounts or tracking](docs/banners/features-en.svg)
+
 - Complete Russian and English pages, including the illustrative app demo, accessible labels, metadata and release-status messages.
 - One globe + EN/RU language button in the header, styled like the site's outlined buttons and visible on desktop and mobile. It replaces the former header download button.
 - Automatic language selection on the main entry page: Russian for `ru` browser preferences, English for all other or missing preferences.
@@ -20,6 +24,10 @@ A bilingual Russian/English website for **Grizzly**, the offline Markdown and te
 - Direct installer links in both HTML pages work immediately without waiting for JavaScript or the GitHub API.
 - The public GitHub Releases API updates links to the latest available release; if it fails, verified direct links remain usable.
 - No build framework, third-party JavaScript dependencies, accounts, analytics or website cookies.
+
+## Downloading Grizzly
+
+[![Download flow: choose a language, select Apple Silicon, Intel or Windows, and download the release asset directly from GitHub](docs/banners/downloads-en.svg)](https://slipcast-dev.github.io/grizzly-website/en.html?lang=en#download)
 
 ## Language selection
 
@@ -62,6 +70,7 @@ Tests cover browser languages, manual overrides, stored preferences, blocked sto
 - `app.js` — demo controls and localized release lookup.
 - `styles.css` — shared responsive styling and language selector.
 - `scripts/`, `tests/` — validation, packaging and regression tests.
+- `docs/banners/` — repository-only SVG banners in English and Russian. Keep both versions in sync; these files are not included in the website artifact.
 - `README.ru.md`, `SECURITY.ru.md`, `CONTRIBUTING.ru.md`, `CODE_OF_CONDUCT.ru.md` — full Russian documentation; un-suffixed files are English.
 
 ## Deployment and maintenance
