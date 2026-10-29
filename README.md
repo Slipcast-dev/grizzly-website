@@ -13,7 +13,7 @@ A bilingual Russian/English website for **Grizzly**, the offline Markdown and te
 ## Features
 
 - Complete Russian and English pages, including the illustrative app demo, accessible labels, metadata and release-status messages.
-- RU/EN switch in the header, visible on desktop and mobile.
+- One globe + EN/RU language button in the header, styled like the site's outlined buttons and visible on desktop and mobile. It replaces the former header download button.
 - Automatic language selection on the main entry page: Russian for `ru` browser preferences, English for all other or missing preferences.
 - A manual language choice takes priority and is remembered in this browser using the `grizzly-language` localStorage key.
 - Dark responsive design, inline platform SVG logos and themed feature icons; download buttons highlight on hover.
@@ -30,9 +30,9 @@ A bilingual Russian/English website for **Grizzly**, the offline Markdown and te
 3. A direct `en.html` link opens English if no preference was saved.
 4. On the main entry page, the browser's preferred language: `ru` → Russian; everything else → English.
 
-A website can read browser language preferences, not a separate operating-system language setting. These often match. If localStorage is blocked, language selection still works for the current navigation, but cannot be remembered. Automatic redirects preserve query parameters and section anchors. With JavaScript disabled, both full pages, language links and downloads still work; automatic selection and persistence are unavailable.
+A website can read browser language preferences, not a separate operating-system language setting. These often match. If localStorage is blocked, language selection still works for the current navigation, but cannot be remembered. Automatic redirects preserve query parameters and section anchors. With JavaScript disabled, both full pages, the language button and downloads still work; automatic selection and persistence are unavailable.
 
-To return to automatic selection, clear this site's stored data in your browser. The RU/EN links always override the saved choice.
+To return to automatic selection, clear this site's stored data in your browser. The language button always overrides the saved choice: EN switches the Russian page to English, and RU switches the English page to Russian. Downloads remain available in the hero and platform sections.
 
 ## Development and checks
 
@@ -52,7 +52,7 @@ python3 scripts/validate.py
 python3 scripts/package.py
 ```
 
-Tests cover browser languages, manual overrides, stored preferences, blocked storage, redirect anchors, both translated pages, localized release messages, API failures and malicious download URLs. Validation checks both pages, matching section anchors, local links, documentation links, CSP and pinned Actions.
+Tests cover browser languages, manual overrides, stored preferences, blocked storage, redirect anchors, both translated pages, localized release messages, API failures and malicious download URLs. Validation checks both pages, the single language button and its target language, matching section anchors, local links, documentation links, CSP and pinned Actions.
 
 ## Repository layout
 

@@ -17,9 +17,12 @@ class PageValidator(HTMLParser):
         self.csp = ""
         self.referrer = ""
         self.text: list[str] = []
+        self.language_controls: list[dict[str, str | None]] = []
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
         values = dict(attrs)
+        if tag == "a" and "language-toggle" in (values.get("class") or "").split():
+            self.language_controls.append(values)
         for name in ("alt", "title", "aria-label", "placeholder"):
             if values.get(name):
                 self.text.append(values[name])
@@ -59,6 +62,15 @@ def check_page(filename: str, language: str) -> PageValidator:
     assert 'src="language.js"' in source
     assert 'hreflang="ru"' in source and 'hreflang="en"' in source
     page.feed(source)
+    # Проверяем реальную кнопку: без lang-параметра сохранённый выбор отменил бы переключение.
+    assert len(page.language_controls) == 1, "Нужна ровно одна кнопка языка"
+    control = page.language_controls[0]
+    target_language = "en" if language == "ru" else "ru"
+    target_page = "en.html" if language == "ru" else "index.html"
+    assert control.get("href") == f"{target_page}?lang={target_language}"
+    assert control.get("hreflang") == target_language
+    assert control.get("lang") == target_language
+    assert control.get("aria-label"), "Нет доступной подписи кнопки языка"
     if language == "en":
         assert not re.search(r"[А-Яа-яЁё]", " ".join(page.text)), "Непереведённый текст EN"
     for url in page.urls:
