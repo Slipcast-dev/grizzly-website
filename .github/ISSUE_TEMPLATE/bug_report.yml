@@ -1,24 +1,24 @@
-name: Ошибка сайта
-description: Проблема с отображением, навигацией или загрузкой
+name: Website bug (English)
+description: Report a display, navigation, language or download problem
 title: "[Bug]: "
 labels: [bug]
 body:
   - type: textarea
     id: problem
     attributes:
-      label: Проблема и ожидаемое поведение
+      label: Problem and expected behavior
     validations:
       required: true
   - type: textarea
     id: steps
     attributes:
-      label: Шаги воспроизведения
-      description: Не включайте секреты и персональные данные.
+      label: Steps to reproduce
+      description: Do not include secrets or personal information.
     validations:
       required: true
   - type: input
     id: environment
     attributes:
-      label: Браузер, версия и ОС
+      label: Browser, version, OS and selected site language
     validations:
       required: true

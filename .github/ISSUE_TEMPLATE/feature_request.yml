@@ -1,11 +1,11 @@
-name: Предложение
-description: Улучшение сайта
+name: Feature request (English)
+description: Suggest a website improvement
 title: "[Idea]: "
 labels: [enhancement]
 body:
   - type: textarea
     id: proposal
     attributes:
-      label: Какую задачу решит изменение?
+      label: What problem would this solve?
     validations:
       required: true

@@ -4,7 +4,7 @@ import shutil
 
 ROOT = Path(__file__).resolve().parents[1]
 PUBLIC_FILES = (
-    "index.html", "styles.css", "app.js", "assets/icon.png",
+    "index.html", "en.html", "styles.css", "app.js", "language.js", "assets/icon.png",
     ".nojekyll", ".well-known/security.txt",
 )
 

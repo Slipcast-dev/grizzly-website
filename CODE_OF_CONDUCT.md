@@ -1,7 +1,9 @@
-# Кодекс поведения
+# Code of conduct
 
-Участники обсуждений, issues и pull requests обязуются общаться уважительно, обсуждать идеи и код, учитывать различия опыта и избегать личных нападок.
+**English** · [Русский](CODE_OF_CONDUCT.ru.md)
 
-Недопустимы угрозы, травля, дискриминация, публикация чужих персональных данных и спам. Конструктивная техническая критика приветствуется.
+Participants in discussions, issues and pull requests agree to communicate respectfully, discuss ideas and code, recognize differences in experience and avoid personal attacks.
 
-При нарушении используйте встроенную функцию GitHub **Report content**; не публикуйте чувствительные детали в issue. Владелец может редактировать или удалять нарушающие правила материалы, закрывать обсуждения и ограничивать участие соразмерно ситуации. Эти правила действуют во всех пространствах этого репозитория.
+Threats, harassment, discrimination, publishing other people's personal information and spam are unacceptable. Constructive technical criticism is welcome.
+
+Use GitHub's built-in **Report content** feature to report violations; do not post sensitive details in an issue. The owner may edit or remove violating material, close discussions or restrict participation proportionately. These rules apply throughout this repository.
