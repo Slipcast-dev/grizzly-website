@@ -2,6 +2,8 @@
 
 [English](README.md) · **Русский**
 
+[![Grizzly Website — два языка, прямые загрузки для macOS и Windows, открытый код](docs/banners/cover-ru.svg)](https://slipcast-dev.github.io/grizzly-website/)
+
 [![Validate](https://github.com/Slipcast-dev/grizzly-website/actions/workflows/validate.yml/badge.svg)](https://github.com/Slipcast-dev/grizzly-website/actions/workflows/validate.yml)
 [![CodeQL](https://github.com/Slipcast-dev/grizzly-website/actions/workflows/codeql.yml/badge.svg)](https://github.com/Slipcast-dev/grizzly-website/actions/workflows/codeql.yml)
 [![MIT](https://img.shields.io/badge/license-MIT-86c9b2)](LICENSE)
@@ -12,6 +14,8 @@
 
 ## Возможности
 
+![Возможности сайта: два языка, прямые загрузки, статический сайт под MIT без аккаунтов и отслеживания](docs/banners/features-ru.svg)
+
 - Полные русская и английская страницы: переведены демонстрация интерфейса, доступные подписи, метаданные и сообщения о релизах.
 - Одна кнопка языка с глобусом и EN/RU в шапке оформлена как контурные кнопки сайта и видна на компьютере и мобильном экране. Она заменяет прежнюю кнопку скачивания в шапке.
 - Автоматический выбор на главной странице: русский при предпочтительном языке браузера `ru`, английский при любом другом или отсутствующем значении.
@@ -20,6 +24,10 @@
 - Прямые ссылки встроены в обе HTML-страницы и работают сразу, без ожидания JavaScript или GitHub API.
 - Публичный GitHub Releases API обновляет ссылки; при его ошибке остаются проверенные прямые ссылки.
 - Без сборщика, сторонних JavaScript-зависимостей, аккаунтов, аналитики и cookies сайта.
+
+## Как скачать Grizzly
+
+[![Путь загрузки: выберите язык и платформу Apple Silicon, Intel или Windows, затем скачайте файл релиза напрямую с GitHub](docs/banners/downloads-ru.svg)](https://slipcast-dev.github.io/grizzly-website/index.html?lang=ru#download)
 
 ## Как выбирается язык
 
@@ -62,6 +70,7 @@ python3 scripts/package.py
 - `app.js` — демонстрация интерфейса и локализованная проверка релизов.
 - `styles.css` — общие стили и переключатель языка.
 - `scripts/`, `tests/` — проверки, упаковка и регрессионные тесты.
+- `docs/banners/` — SVG-баннеры репозитория на русском и английском. Обновляйте обе версии синхронно; в артефакт сайта эти файлы не входят.
 - `README.ru.md`, `SECURITY.ru.md`, `CONTRIBUTING.ru.md`, `CODE_OF_CONDUCT.ru.md` — полная русская документация; файлы без суффикса написаны по-английски.
 
 ## Публикация и сопровождение
