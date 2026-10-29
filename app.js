@@ -15,7 +15,7 @@ for (const button of modeButtons) {
   });
 }
 
-/** Получает актуальные установщики; при ошибке остаются рабочие ссылки на релиз. */
+/** Получает актуальные установщики; при ошибке сохраняет прямые ссылки из HTML. */
 async function loadDownloads() {
   const status = document.getElementById('release-status');
   const controller = new AbortController();
@@ -51,9 +51,9 @@ async function loadDownloads() {
     }
     status.textContent = found === 3
       ? `${release.tag_name} · Загрузка напрямую из GitHub Releases`
-      : `${release.tag_name} · Для недоступных сборок откроется страница релиза.`;
+      : `${release.tag_name} · Для остальных платформ сохранены прямые ссылки на проверенные сборки.`;
   } catch {
-    status.textContent = 'Не удалось проверить версию. Кнопки откроют последний релиз на GitHub.';
+    status.textContent = 'Не удалось проверить новую версию. Доступна прямая загрузка проверенных сборок.';
   } finally {
     clearTimeout(timeout);
   }
