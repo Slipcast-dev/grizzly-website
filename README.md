@@ -24,6 +24,7 @@ A bilingual Russian/English website for **Grizzly**, an app for Markdown, text a
 - A compact Python illustration with read, source and edit previews. Code rows retain indentation without extra blank lines; the built-in example never reads or edits visitor files.
 - Language families: Python, Swift, C/C++, C#, JavaScript/JSX, TypeScript/TSX, CSS/SCSS and PHP. The code section describes highlighting, editing and viewing two files at once.
 - Matching download and “Grizzly features” buttons with SVG icons; the platform, price and account note is centered beneath them. The features button opens the features section.
+- Readable supporting copy: 14 px feature descriptions, 11–12 px small labels, stronger muted-text contrast, aligned navigation with a proportional GitHub logo, and a responsive footer.
 - Dark responsive design with no horizontal page overflow, including reduced-motion mode. All download and external-link icons use inline SVG rather than font symbols; buttons highlight on hover.
 - Direct installer links in both HTML pages work immediately without waiting for JavaScript or the GitHub API.
 - The public GitHub Releases API updates links to the latest available release; if it fails, verified direct links remain usable.
