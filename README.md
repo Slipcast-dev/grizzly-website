@@ -20,7 +20,7 @@ A bilingual Russian/English website for **Grizzly**, an offline app for Markdown
 - One globe + EN/RU language button in the header, styled like the site's outlined buttons and visible on desktop and mobile.
 - Automatic language selection on the main entry page: Russian for `ru` browser preferences, English for all other or missing preferences.
 - A manual language choice takes priority and is remembered in this browser using the `grizzly-language` localStorage key.
-- Approved hero: “A small app. Big possibilities”, with the Grizzly wordmark capitalized in the header and footer.
+- Hero: “Light on the outside. Powerful within.”, with the Grizzly wordmark capitalized in the header and footer.
 - A highlighted Python illustration with read, source and edit previews. It uses a built-in sample; visitor files are never read or edited.
 - Language families: Python, Swift, C/C++, C#, JavaScript/JSX, TypeScript/TSX, CSS/SCSS and PHP. Live highlighting while editing is described only for macOS.
 - Dark responsive design, inline platform SVG logos and themed feature icons; download buttons highlight on hover.
