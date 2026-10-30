@@ -8,7 +8,7 @@
 [![CodeQL](https://github.com/Slipcast-dev/grizzly-website/actions/workflows/codeql.yml/badge.svg)](https://github.com/Slipcast-dev/grizzly-website/actions/workflows/codeql.yml)
 [![MIT](https://img.shields.io/badge/license-MIT-86c9b2)](LICENSE)
 
-A bilingual Russian/English website for **Grizzly**, the offline Markdown and text reader for macOS and Windows.
+A bilingual Russian/English website for **Grizzly**, an offline app for Markdown, text and source code with syntax highlighting on macOS and Windows.
 
 **[Open website](https://slipcast-dev.github.io/grizzly-website/)** · [English](https://slipcast-dev.github.io/grizzly-website/en.html?lang=en) · [Русский](https://slipcast-dev.github.io/grizzly-website/index.html?lang=ru) · **[App source and installers](https://github.com/Slipcast-dev/Grizzly)**
 
@@ -17,9 +17,12 @@ A bilingual Russian/English website for **Grizzly**, the offline Markdown and te
 ![Website features: two languages, direct installer downloads, a static MIT-licensed site without accounts or tracking](docs/banners/features-en.svg)
 
 - Complete Russian and English pages, including the illustrative app demo, accessible labels, metadata and release-status messages.
-- One globe + EN/RU language button in the header, styled like the site's outlined buttons and visible on desktop and mobile. It replaces the former header download button.
+- One globe + EN/RU language button in the header, styled like the site's outlined buttons and visible on desktop and mobile.
 - Automatic language selection on the main entry page: Russian for `ru` browser preferences, English for all other or missing preferences.
 - A manual language choice takes priority and is remembered in this browser using the `grizzly-language` localStorage key.
+- Approved hero: “A small app. Big possibilities”, with the Grizzly wordmark capitalized in the header and footer.
+- A highlighted Python illustration with read, source and edit previews. It uses a built-in sample; visitor files are never read or edited.
+- Language families: Python, Swift, C/C++, C#, JavaScript/JSX, TypeScript/TSX, CSS/SCSS and PHP. Live highlighting while editing is described only for macOS.
 - Dark responsive design, inline platform SVG logos and themed feature icons; download buttons highlight on hover.
 - Direct installer links in both HTML pages work immediately without waiting for JavaScript or the GitHub API.
 - The public GitHub Releases API updates links to the latest available release; if it fails, verified direct links remain usable.
@@ -60,14 +63,14 @@ python3 scripts/validate.py
 python3 scripts/package.py
 ```
 
-Tests cover browser languages, manual overrides, stored preferences, blocked storage, redirect anchors, both translated pages, localized release messages, API failures and malicious download URLs. Validation checks both pages, the single language button and its target language, matching section anchors, local links, documentation links, CSP and pinned Actions.
+Tests cover illustration modes and accessibility, browser languages, manual overrides, stored preferences, blocked storage, redirect anchors, both translated pages, localized release messages, API failures and malicious download URLs. Validation checks both pages, the single language button and its target language, matching section anchors, local links, documentation links, CSP and pinned Actions.
 
 ## Repository layout
 
 - `index.html` — full Russian page.
 - `en.html` — full English page.
 - `language.js` — language selection and saved preference.
-- `app.js` — demo controls and localized release lookup.
+- `app.js` — illustration preview modes and localized release lookup.
 - `styles.css` — shared responsive styling and language selector.
 - `scripts/`, `tests/` — validation, packaging and regression tests.
 - `docs/banners/` — repository-only SVG banners in English and Russian. Keep both versions in sync; these files are not included in the website artifact.
@@ -81,7 +84,7 @@ Changes go through a pull request with required Site checks and JavaScript secur
 
 Actions use full commit SHA pins and minimum permissions; checkout does not persist credentials. Dependabot checks Actions weekly and CodeQL scans JavaScript on changes and weekly.
 
-When an app release is published, update the verified fallback links in **both** HTML pages as well. They currently point to the checked assets of **v0.3.3**. Runtime API lookup can select newer releases, but cannot update the static fallback. Keep RU/EN content, metadata and both documentation versions in sync.
+When an app release is published, update the verified fallback links in **both** HTML pages as well. They currently point to the checked assets of **v1.1.0**. Runtime API lookup can select newer releases, but cannot update the static fallback. Keep RU/EN content, metadata and both documentation versions in sync.
 
 ## Privacy and hosting limits
 
