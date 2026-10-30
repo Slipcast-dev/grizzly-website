@@ -84,7 +84,7 @@ Changes go through a pull request with required Site checks and JavaScript secur
 
 Actions use full commit SHA pins and minimum permissions; checkout does not persist credentials. Dependabot checks Actions weekly and CodeQL scans JavaScript on changes and weekly.
 
-When an app release is published, update the verified fallback links in **both** HTML pages as well. They currently point to the checked assets of **v1.2.0**. Runtime API lookup can select newer releases, but cannot update the static fallback. Keep RU/EN content, metadata and both documentation versions in sync.
+When an app release is published, update the verified fallback links in **both** HTML pages as well. They currently point to the checked assets of **v1.2.1**. Runtime API lookup can select newer releases, but cannot update the static fallback. Keep RU/EN content, metadata and both documentation versions in sync.
 
 ## Privacy and hosting limits
 
