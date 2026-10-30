@@ -67,6 +67,8 @@ python3 scripts/package.py
 
 Tests cover illustration modes and accessibility, browser languages, manual overrides, stored preferences, blocked storage, redirect anchors, both translated pages, localized release messages, API failures and malicious download URLs. Validation checks both pages, the single language button and its target language, matching section anchors, local links, documentation links, CSP and pinned Actions.
 
+Before merging layout changes, check both languages at 320, 390, 700, 768, 1000, 1280, 1440 and 1920 px, including reduced-motion mode. Confirm readable supporting text (14 px feature descriptions and 11–12 px labels), equal hero buttons and their centered note, aligned navigation, a GitHub logo no taller than its label, and footer link icons that follow the text size. Check that mobile intro lines remain separated, the footer centers cleanly, all three demo modes work, and the page has no horizontal overflow. Review screenshots at their native size; Node tests and HTML validation do not verify visual layout.
+
 ## Repository layout
 
 - `index.html` — full Russian page.
@@ -87,6 +89,8 @@ Changes go through a pull request with required Site checks and JavaScript secur
 Actions use full commit SHA pins and minimum permissions; checkout does not persist credentials. Dependabot checks Actions weekly and CodeQL scans JavaScript on changes and weekly.
 
 When an app release is published, update the verified fallback links in **both** HTML pages as well. They currently point to the checked assets of **v1.2.2**. Runtime API lookup can select newer releases, but cannot update the static fallback. Keep RU/EN content, metadata and both documentation versions in sync. Verify release asset names before changing these URLs; do not replace working installer links with guessed URLs.
+
+After merging, verify the required checks and the Deploy Pages workflow for the merged commit, then compare the public RU/EN pages and stylesheet with that commit. Publishing a cloud development environment is separate from publishing the website. Remove completed branches only after confirming their changes are preserved in `main`; squash merges require a content comparison, not just an ancestry check. Keep branches with open PRs or unique work.
 
 ## Privacy and hosting limits
 

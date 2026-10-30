@@ -16,3 +16,7 @@ Do not change workflow permissions without justification. Pin Actions to full SH
 Required checks and discussion resolution must complete before merge. Contributions use the project's MIT license. Follow the [code of conduct](CODE_OF_CONDUCT.md).
 
 For layout changes, check widths from 320 px to desktop in both languages, including reduced-motion mode. Confirm that the page has no horizontal overflow, hero buttons have equal dimensions, and the note is centered below them. Use decorative inline SVG with `aria-hidden="true"` and `focusable="false"` for icons; avoid font-dependent arrow symbols.
+
+Keep feature descriptions at 14 px and supporting labels at 11–12 px, with readable contrast. Header links must share a baseline; the GitHub logo and footer link icons must not exceed their text size. Keep feature-card padding and bottom notes aligned, preserve mobile intro line breaks, and center the mobile footer. Use the viewport checklist in [README](README.md) and inspect screenshots at native scale.
+
+After a PR is merged and the deployed commit is verified, delete its completed branch. Before removing a local branch, check for unique work and compare its contents with the merge result when squash merging was used. Do not delete open-PR branches or unmerged changes.
