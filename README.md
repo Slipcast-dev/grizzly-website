@@ -21,9 +21,10 @@ A bilingual Russian/English website for **Grizzly**, an app for Markdown, text a
 - Automatic language selection on the main entry page: Russian for `ru` browser preferences, English for all other or missing preferences.
 - A manual language choice takes priority and is remembered in this browser using the `grizzly-language` localStorage key.
 - Hero: “Light on the outside. Powerful within.”, with the Grizzly wordmark capitalized in the header and footer.
-- A highlighted Python illustration with read, source and edit previews. It uses a built-in sample; visitor files are never read or edited.
-- Language families: Python, Swift, C/C++, C#, JavaScript/JSX, TypeScript/TSX, CSS/SCSS and PHP. Live highlighting while editing is described only for macOS.
-- Dark responsive design, inline platform SVG logos and themed feature icons; download buttons highlight on hover.
+- A compact Python illustration with read, source and edit previews. Code rows retain indentation without extra blank lines; the built-in example never reads or edits visitor files.
+- Language families: Python, Swift, C/C++, C#, JavaScript/JSX, TypeScript/TSX, CSS/SCSS and PHP. The code section describes highlighting, editing and viewing two files at once.
+- Matching download and “Grizzly features” buttons with SVG icons; the platform, price and account note is centered beneath them. The features button opens the features section.
+- Dark responsive design with no horizontal page overflow, including reduced-motion mode. All download and external-link icons use inline SVG rather than font symbols; buttons highlight on hover.
 - Direct installer links in both HTML pages work immediately without waiting for JavaScript or the GitHub API.
 - The public GitHub Releases API updates links to the latest available release; if it fails, verified direct links remain usable.
 - No build framework, third-party JavaScript dependencies, accounts, analytics or website cookies.
@@ -84,7 +85,7 @@ Changes go through a pull request with required Site checks and JavaScript secur
 
 Actions use full commit SHA pins and minimum permissions; checkout does not persist credentials. Dependabot checks Actions weekly and CodeQL scans JavaScript on changes and weekly.
 
-When an app release is published, update the verified fallback links in **both** HTML pages as well. They currently point to the checked assets of **v1.2.2**. Runtime API lookup can select newer releases, but cannot update the static fallback. Keep RU/EN content, metadata and both documentation versions in sync.
+When an app release is published, update the verified fallback links in **both** HTML pages as well. They currently point to the checked assets of **v1.2.2**. Runtime API lookup can select newer releases, but cannot update the static fallback. Keep RU/EN content, metadata and both documentation versions in sync. Verify release asset names before changing these URLs; do not replace working installer links with guessed URLs.
 
 ## Privacy and hosting limits
 

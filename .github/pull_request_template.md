@@ -9,7 +9,10 @@
 - [ ] `python3 scripts/package.py`
 - [ ] RU/EN pages, dynamic messages and documentation are in sync / RU/EN, сообщения и документация синхронизированы
 - [ ] Language detection, manual choice and blocked storage checked / Проверены автовыбор, ручной выбор и отказ хранилища
-- [ ] Narrow/wide screens and keyboard navigation checked for visual changes / Для визуальных изменений проверены узкий/широкий экран и клавиатура
+- [ ] All three demo modes checked / Проверены чтение, исходник и правка
+- [ ] Narrow/wide screens, reduced motion and keyboard navigation checked / Проверены узкий/широкий экран, уменьшенное движение и клавиатура
+- [ ] No horizontal overflow; hero buttons match in size and their note is centered / Нет горизонтального переполнения; главные кнопки одинаковые, подпись отцентрирована
+- [ ] Download and external-link SVG icons render correctly / SVG-значки скачивания и внешних ссылок отображаются корректно
 - [ ] No secrets or personal data in the diff / В diff нет секретов и персональных данных
 
 ## Screenshots for visual changes / Скриншоты изменений интерфейса
