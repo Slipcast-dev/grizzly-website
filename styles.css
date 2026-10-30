@@ -80,6 +80,7 @@ footer .inline-icon{display:block;width:1em;height:1em}
  .feature-grid h3{min-height:0}
  .feature-note{padding-top:20px}
  .section-intro,.syntax-copy>p:last-child{font-size:14px}
+ .section-intro br{display:block}
  .preview-caption{flex-wrap:wrap}
  .preview-caption>span{max-width:none}
  .syntax-preview{font-size:12px}
