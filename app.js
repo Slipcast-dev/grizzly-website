@@ -7,6 +7,8 @@ for (const button of modeButtons) {
     const reading = button.dataset.mode === 'read';
     document.getElementById('demo-read').hidden = !reading;
     document.getElementById('demo-source').hidden = reading;
+    // Правка показана как иллюстрация режима приложения, без доступа к файлам.
+    document.getElementById('demo-source').classList.toggle('editing', button.dataset.mode === 'edit');
     for (const candidate of modeButtons) {
       const selected = candidate === button;
       candidate.classList.toggle('active', selected);
