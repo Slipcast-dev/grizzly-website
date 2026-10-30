@@ -8,7 +8,7 @@
 [![CodeQL](https://github.com/Slipcast-dev/grizzly-website/actions/workflows/codeql.yml/badge.svg)](https://github.com/Slipcast-dev/grizzly-website/actions/workflows/codeql.yml)
 [![MIT](https://img.shields.io/badge/license-MIT-86c9b2)](LICENSE)
 
-A bilingual Russian/English website for **Grizzly**, an offline app for Markdown, text and source code with syntax highlighting on macOS and Windows.
+A bilingual Russian/English website for **Grizzly**, an app for Markdown, text and source code (syntax highlighting, tags, spell check, in-app updates) on macOS and Windows.
 
 **[Open website](https://slipcast-dev.github.io/grizzly-website/)** · [English](https://slipcast-dev.github.io/grizzly-website/en.html?lang=en) · [Русский](https://slipcast-dev.github.io/grizzly-website/index.html?lang=ru) · **[App source and installers](https://github.com/Slipcast-dev/Grizzly)**
 
@@ -84,7 +84,7 @@ Changes go through a pull request with required Site checks and JavaScript secur
 
 Actions use full commit SHA pins and minimum permissions; checkout does not persist credentials. Dependabot checks Actions weekly and CodeQL scans JavaScript on changes and weekly.
 
-When an app release is published, update the verified fallback links in **both** HTML pages as well. They currently point to the checked assets of **v1.1.0**. Runtime API lookup can select newer releases, but cannot update the static fallback. Keep RU/EN content, metadata and both documentation versions in sync.
+When an app release is published, update the verified fallback links in **both** HTML pages as well. They currently point to the checked assets of **v1.2.0**. Runtime API lookup can select newer releases, but cannot update the static fallback. Keep RU/EN content, metadata and both documentation versions in sync.
 
 ## Privacy and hosting limits
 

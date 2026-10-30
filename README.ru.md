@@ -8,7 +8,7 @@
 [![CodeQL](https://github.com/Slipcast-dev/grizzly-website/actions/workflows/codeql.yml/badge.svg)](https://github.com/Slipcast-dev/grizzly-website/actions/workflows/codeql.yml)
 [![MIT](https://img.shields.io/badge/license-MIT-86c9b2)](LICENSE)
 
-Двуязычный сайт-витрина **Grizzly** — офлайн-приложения для Markdown, текста и исходного кода с подсветкой синтаксиса на macOS и Windows.
+Двуязычный сайт-витрина **Grizzly** — приложения для Markdown, текста и исходного кода (подсветка синтаксиса, теги, проверка орфографии, обновление из приложения) на macOS и Windows.
 
 **[Открыть сайт](https://slipcast-dev.github.io/grizzly-website/)** · [Русский](https://slipcast-dev.github.io/grizzly-website/index.html?lang=ru) · [English](https://slipcast-dev.github.io/grizzly-website/en.html?lang=en) · **[Исходники приложения и установщики](https://github.com/Slipcast-dev/Grizzly)**
 
@@ -84,7 +84,7 @@ GitHub Actions публикует сайт после изменения `main`;
 
 Actions закреплены полными SHA и получают минимальные права; checkout не сохраняет credentials. Dependabot проверяет Actions еженедельно, CodeQL анализирует JavaScript при изменениях и еженедельно.
 
-После релиза приложения обновляйте резервные ссылки в **обеих** HTML-страницах. Сейчас они указывают на проверенные файлы **v1.1.0**. JavaScript может получить более новый релиз, но не меняет статический резервный HTML. Синхронно обновляйте тексты RU/EN, метаданные и обе версии документации.
+После релиза приложения обновляйте резервные ссылки в **обеих** HTML-страницах. Сейчас они указывают на проверенные файлы **v1.2.0**. JavaScript может получить более новый релиз, но не меняет статический резервный HTML. Синхронно обновляйте тексты RU/EN, метаданные и обе версии документации.
 
 ## Приватность и ограничения хостинга
 
