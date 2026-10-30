@@ -12,7 +12,7 @@
 
 ## Proposed changes
 
-The page keeps its existing identity and gains source-code copy, programming-language extensions, a Python Source-mode illustration, a compact section for eight language families and a fenced Markdown example. The release badge and the theme-color caption below the demo are removed. Hero copy is repositioned to keep the layout balanced. The section heading is “Everything you need. Now all in one place.” The supporting copy is “Text. Code. Context. Whatever you're working on.” The reading card mentions Markdown, text and fenced code. The design focuses only on syntax highlighting.
+The page keeps its existing identity and gains source-code copy, programming-language extensions, a Python Source-mode illustration and a compact section for eight language families. The release badge and the theme-color caption below the demo are removed. Hero copy is repositioned to keep the layout balanced. The section heading is “Everything you need. Now all in one place.” The supporting copy is “Text. Code. Context. Whatever you're working on.” The reading card mentions Markdown, text and fenced code. The separate Markdown example panel has been removed and subsequent sections moved up. The design focuses only on syntax highlighting.
 
 The existing dark palette, teal/gold/coral accents, page progression, language button, original PNG app icon, wordmark and Apple/Intel/Windows SVG marks are retained. Highlight colors come from the app's existing Xcode theme. The app panel is an illustration, not a screenshot of a running build.
 
