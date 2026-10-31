@@ -19,7 +19,7 @@ Include the URL, commit SHA if known, browser, reproduction steps and expected i
 - Verified direct installer links are embedded in both HTML pages and remain available when the API fails.
 - API text is displayed using `textContent`. Installer URLs must use HTTPS, `github.com` and the exact app release path. URLs containing credentials are rejected.
 - CSP permits local scripts, styles and images, with API connections only to GitHub. Inline scripts and eval are not allowed. Referrer Policy is `no-referrer`.
-- Publication includes only eight allowlisted resources: `index.html`, `en.html`, `styles.css`, `app.js`, `language.js`, `assets/icon.png`, `.nojekyll` and `.well-known/security.txt`.
+- Publication includes only nine allowlisted resources: `index.html`, `en.html`, `styles.css`, `app.js`, `language.js`, `assets/icon.png`, `assets/grizzly-hero.png`, `.nojekyll` and `.well-known/security.txt`.
 - Language selection can redirect only to fixed RU/EN paths on the same site. URL and stored preferences accept only `ru`/`en`; unsupported values are ignored.
 - localStorage contains only the manual `grizzly-language` preference. Storage denial does not break the site. There are no website cookies or visitor tracking.
 - CI checks both language pages, language selection and storage denial, unsafe constructs, Actions SHA pins and GitHub download handling. CodeQL analyzes JavaScript.
