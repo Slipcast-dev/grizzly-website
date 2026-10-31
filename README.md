@@ -88,7 +88,7 @@ Changes go through a pull request with required Site checks and JavaScript secur
 
 Actions use full commit SHA pins and minimum permissions; checkout does not persist credentials. Dependabot checks Actions weekly and CodeQL scans JavaScript on changes and weekly.
 
-When an app release is published, update the verified fallback links in **both** HTML pages as well. They currently point to the checked assets of **v1.2.2**. Runtime API lookup can select newer releases, but cannot update the static fallback. Keep RU/EN content, metadata and both documentation versions in sync. Verify release asset names before changing these URLs; do not replace working installer links with guessed URLs.
+When an app release is published, update the verified fallback links in **both** HTML pages as well. They currently point to the checked assets of **v1.3.0**. Runtime API lookup can select newer releases, but cannot update the static fallback. Keep RU/EN content, metadata and both documentation versions in sync. Verify release asset names before changing these URLs; do not replace working installer links with guessed URLs.
 
 After merging, verify the required checks and the Deploy Pages workflow for the merged commit, then compare the public RU/EN pages and stylesheet with that commit. Publishing a cloud development environment is separate from publishing the website. Remove completed branches only after confirming their changes are preserved in `main`; squash merges require a content comparison, not just an ancestry check. Keep branches with open PRs or unique work.
 
