@@ -20,8 +20,9 @@ A bilingual Russian/English website for **Grizzly**, an app for Markdown, text a
 - One globe + EN/RU language button in the header, styled like the site's outlined buttons and visible on desktop and mobile.
 - Automatic language selection on the main entry page: Russian for `ru` browser preferences, English for all other or missing preferences.
 - A manual language choice takes priority and is remembered in this browser using the `grizzly-language` localStorage key.
-- Hero: “Light on the outside. Powerful within.”, with the Grizzly wordmark capitalized in the header and footer.
+- Hero: “Light on the outside. Powerful within.” beside a realistic brown grizzly with soft amber/teal lighting and a transparent edge fade. The introductory paragraph below the headline is omitted; original app emblems remain in the header and footer.
 - A compact Python illustration with read, source and edit previews. Code rows retain indentation without extra blank lines; the built-in example never reads or edits visitor files.
+- The first feature card, “Text, code, editor”, describes formatting and editing text and code to suit your style.
 - Language families: Python, Swift, C/C++, C#, JavaScript/JSX, TypeScript/TSX, CSS/SCSS and PHP. The code section describes highlighting, editing and viewing two files at once.
 - Matching download and “Grizzly features” buttons with SVG icons; the platform, price and account note is centered beneath them. The features button opens the features section.
 - Readable supporting copy: 14 px feature descriptions, 11–12 px small labels, stronger muted-text contrast, aligned navigation with a proportional GitHub logo, and a responsive footer.
@@ -75,14 +76,15 @@ Before merging layout changes, check both languages at 320, 390, 700, 768, 1000,
 - `en.html` — full English page.
 - `language.js` — language selection and saved preference.
 - `app.js` — illustration preview modes and localized release lookup.
-- `styles.css` — shared responsive styling and language selector.
+- `styles.css` — shared responsive styling, language selector and grizzly hero lighting/fade.
+- `assets/grizzly-hero.png` — transparent realistic bear illustration used only in the hero; `assets/icon.png` remains the original app emblem.
 - `scripts/`, `tests/` — validation, packaging and regression tests.
 - `docs/banners/` — repository-only SVG banners in English and Russian. Keep both versions in sync; these files are not included in the website artifact.
 - `README.ru.md`, `SECURITY.ru.md`, `CONTRIBUTING.ru.md`, `CODE_OF_CONDUCT.ru.md` — full Russian documentation; un-suffixed files are English.
 
 ## Deployment and maintenance
 
-GitHub Actions publishes to GitHub Pages after a change reaches `main`; PR code cannot deploy. The `github-pages` environment permits only `main`. The artifact contains exactly eight allowlisted resources: `index.html`, `en.html`, `styles.css`, `app.js`, `language.js`, `assets/icon.png`, `.nojekyll` and `.well-known/security.txt`. Source documentation, tests and repository configuration are excluded.
+GitHub Actions publishes to GitHub Pages after a change reaches `main`; PR code cannot deploy. The `github-pages` environment permits only `main`. The artifact contains exactly nine allowlisted resources: `index.html`, `en.html`, `styles.css`, `app.js`, `language.js`, `assets/icon.png`, `assets/grizzly-hero.png`, `.nojekyll` and `.well-known/security.txt`. Source documentation, tests and repository configuration are excluded.
 
 Changes go through a pull request with required Site checks and JavaScript security checks, an up-to-date branch and resolved conversations. Force pushes and deletion of `main` are blocked, including for administrators. An independent approval is not mandatory for this single-maintainer project; enable it when a team joins.
 
