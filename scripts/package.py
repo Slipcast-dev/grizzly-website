@@ -1,6 +1,8 @@
 """Создаёт артефакт Pages только из явно разрешённых публичных файлов."""
 from pathlib import Path
 import shutil
+import hashlib
+import re
 
 ROOT = Path(__file__).resolve().parents[1]
 PUBLIC_FILES = (
@@ -25,7 +27,13 @@ def main() -> None:
     for name in PUBLIC_FILES:
         target = destination / name
         target.parent.mkdir(parents=True, exist_ok=True)
-        shutil.copyfile(ROOT / name, target)
+        if name in {"index.html", "en.html"}:
+            version = hashlib.sha256((ROOT / "styles.css").read_bytes()).hexdigest()[:16]
+            page = (ROOT / name).read_text()
+            page = re.sub(r'href="styles\.css(?:\?v=[a-f0-9]+)?"', f'href="styles.css?v={version}"', page)
+            target.write_text(page)
+        else:
+            shutil.copyfile(ROOT / name, target)
     print(f"Подготовлено {len(PUBLIC_FILES)} публичных ресурсов")
 
 
