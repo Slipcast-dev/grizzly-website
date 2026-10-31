@@ -4,11 +4,13 @@
 
 - [ ] `node --check app.js`
 - [ ] `node --check language.js`
+- [ ] `node --check features.js`
 - [ ] `node --test tests/*.test.cjs`
 - [ ] `python3 scripts/validate.py`
 - [ ] `python3 scripts/package.py`
 - [ ] RU/EN pages, dynamic messages and documentation are in sync / RU/EN, сообщения и документация синхронизированы
 - [ ] Language detection, manual choice and blocked storage checked / Проверены автовыбор, ручной выбор и отказ хранилища
+- [ ] Features dialog: same-page opening, pinned overview, release dates, Escape/close/backdrop and focus restoration / Проверены открытие меню без перехода, закреплённое описание, даты, закрытие и возврат фокуса
 - [ ] All three demo modes checked / Проверены чтение, исходник и правка
 - [ ] Narrow/wide screens, reduced motion and keyboard navigation checked / Проверены узкий/широкий экран, уменьшенное движение и клавиатура
 - [ ] No horizontal overflow; hero buttons match in size and their note is centered / Нет горизонтального переполнения; главные кнопки одинаковые, подпись отцентрирована

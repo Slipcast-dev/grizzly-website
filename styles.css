@@ -106,3 +106,55 @@ footer .inline-icon{display:block;width:1em;height:1em}
 @media(max-width:1000px){.hero-art{min-height:420px}.hero-icon{width:440px}.orbit{width:380px;height:380px}.orbit-two{width:420px;height:420px}}
 @media(max-width:900px){.hero{grid-template-columns:1fr;gap:12px}.hero-art{max-width:470px;min-height:440px}.hero-icon{max-width:105%}}
 @media(max-width:700px){.hero{padding-block:35px 28px;gap:14px}.hero-art{max-width:370px;min-height:340px}.hero-icon{width:360px;max-width:100%}.orbit{width:310px;height:310px}.orbit-two{width:340px;height:340px}}
+
+/* Compact capabilities menu: overview stays visible while releases scroll. */
+.features-menu-open{overflow:hidden}
+.features-menu{width:min(560px,calc(100% - 32px));max-width:none;max-height:calc(100dvh - 32px);padding:0;border:1px solid #86c9b23b;border-radius:16px;background:#171c1c;color:var(--text);box-shadow:0 24px 80px #0008;overflow:hidden}
+.features-menu:not([open]){display:none}
+.features-menu::backdrop{background:#080b0ba6}
+.features-menu-shell{display:flex;flex-direction:column;max-height:min(680px,calc(100dvh - 32px))}
+.features-menu-header{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:22px 24px 14px;flex-shrink:0}
+.features-menu-header h2{font-size:23px;line-height:1.3;letter-spacing:-.6px;font-weight:600}
+.features-menu-close{display:grid;place-items:center;width:32px;height:32px;padding:0;background:#ffffff08;color:var(--muted);border:1px solid var(--line);border-radius:7px;cursor:pointer;flex-shrink:0}
+.features-menu-close:hover{background:#ffffff12;color:var(--text)}
+.features-menu-close svg,.release-entry summary svg{fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.features-overview{padding:0 24px 18px;flex-shrink:0}
+.features-overview p{margin:0;font-size:14px;line-height:1.65;color:#d5ded7}
+.features-overview .features-platform-note{margin-top:12px;padding-left:12px;border-left:2px solid var(--teal);font-size:12px;line-height:1.6;color:var(--muted)}
+.features-updates-heading{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 24px;border-block:1px solid var(--line);flex-shrink:0}
+.features-updates-heading h3{margin:0;font-size:14px;font-weight:600}
+.features-updates-heading>span{font-size:12px;color:var(--muted)}
+.features-release-list{padding:0 24px;overflow-y:auto;overscroll-behavior:contain;min-height:0;max-height:280px;scrollbar-width:thin;scrollbar-color:#52675b transparent}
+.release-entry+.release-entry{border-top:1px solid var(--line)}
+.release-entry summary{display:flex;align-items:center;gap:9px;padding:16px 0;cursor:pointer;list-style:none}
+.release-entry summary::-webkit-details-marker{display:none}
+.release-version{font-size:15px;font-weight:600;white-space:nowrap}
+.release-badge{border:1px solid #86c9b238;border-radius:4px;padding:2px 6px;font-size:10px;line-height:1.4;color:var(--teal);background:#86c9b20a}
+.release-entry time{margin-left:auto;font-size:12px;color:var(--muted);white-space:nowrap}
+.release-entry[open] summary svg{transform:rotate(180deg)}
+.release-entry summary:focus-visible{outline:2px solid var(--teal);outline-offset:-2px;border-radius:4px}
+.release-notes{padding:0 0 17px}
+.release-notes p{font-size:13px;line-height:1.7;color:var(--muted);margin:0 0 10px}
+.release-notes p:last-child{margin-bottom:0}
+.release-notes strong{font-weight:550;color:#d8e0da}
+.features-menu-footer{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:0;margin:0;padding:14px 24px;border-top:1px solid var(--line);font-size:11px;line-height:1.6;color:var(--muted);flex-shrink:0}
+.features-menu-footer a{font-size:12px;color:var(--teal);white-space:nowrap}
+.features-menu-footer>span{margin:0}
+@media(max-width:600px){
+ .features-menu-header{padding:18px 18px 12px;gap:10px}
+ .features-menu-header h2{font-size:21px}
+ .features-overview{padding:0 18px 16px}
+ .features-overview p{font-size:13px}
+ .features-updates-heading{padding:13px 18px}
+ .features-release-list{padding:0 18px;max-height:250px}
+ .release-entry summary{gap:6px;flex-wrap:wrap}
+ .release-badge{font-size:10px}
+ .release-entry time{font-size:11px}
+ .features-menu-footer{padding:12px 18px;flex-direction:column;align-items:flex-start;gap:5px;text-align:left}
+}
+@media(max-height:650px){.features-overview{max-height:38dvh;overflow-y:auto;flex-shrink:1}.features-release-list{flex:1;max-height:220px}.features-menu-footer{padding-block:9px}.features-menu-header{padding-top:14px}}
+
+/* Keep automatically loaded release text inside the existing menu layout. */
+.release-notes{overflow-wrap:anywhere}
+.release-version{white-space:normal;overflow-wrap:anywhere;min-width:0;max-width:45%}
+.release-notes .release-origin{font-size:12px}
