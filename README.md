@@ -23,7 +23,7 @@ A bilingual Russian/English website for **Grizzly**, an app for Markdown, text a
 - Hero: “Light on the outside. Powerful within.” beside a realistic brown grizzly with soft amber/teal lighting and a transparent edge fade. The introductory paragraph below the headline is omitted; original app emblems remain in the header and footer.
 - A compact Python illustration with read, source and edit previews. Code rows retain indentation without extra blank lines; the built-in example never reads or edits visitor files.
 - The first feature card, “Text, code, editor”, describes formatting and editing text and code to suit your style.
-- Language families: Python, Swift, C/C++, C#, JavaScript/JSX, TypeScript/TSX, CSS/SCSS and PHP. The code section describes highlighting, editing and viewing two files at once.
+- Language families: Python, Swift, C/C++, C#, JavaScript/JSX, TypeScript/TSX, CSS/SCSS and PHP. The code section describes highlighting, two working modes and working with two files.
 - Matching download and “Grizzly features” buttons with SVG icons; the platform, price and account note is centered beneath them. The features button opens the features section.
 - Readable supporting copy: 14 px feature descriptions, 11–12 px small labels, stronger muted-text contrast, aligned navigation with a proportional GitHub logo, and a responsive footer.
 - Dark responsive design with no horizontal page overflow, including reduced-motion mode. All download and external-link icons use inline SVG rather than font symbols; buttons highlight on hover.
