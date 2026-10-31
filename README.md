@@ -24,7 +24,7 @@ A bilingual Russian/English website for **Grizzly**, an app for Markdown, text a
 - A compact Python illustration with read, source and edit previews. Code rows retain indentation without extra blank lines; the built-in example never reads or edits visitor files.
 - The first feature card, “Text, code, editor”, describes formatting and editing text and code to suit your style.
 - Language families: Python, Swift, C/C++, C#, JavaScript/JSX, TypeScript/TSX, CSS/SCSS and PHP. The code section describes highlighting, two working modes and working with two files.
-- Matching download and “Grizzly features” buttons with SVG icons; the platform, price and account note is centered beneath them. The features button opens the features section.
+- Matching download and “Grizzly features” buttons with SVG icons; the platform, price and account note is centered beneath them. The features button opens a compact in-page dialog: the capabilities overview remains above a scrolling release history. Without JavaScript, it links to the features section.
 - Readable supporting copy: 14 px feature descriptions, 11–12 px small labels, stronger muted-text contrast, aligned navigation with a proportional GitHub logo, and a responsive footer.
 - Dark responsive design with no horizontal page overflow, including reduced-motion mode. All download and external-link icons use inline SVG rather than font symbols; buttons highlight on hover.
 - Direct installer links in both HTML pages work immediately without waiting for JavaScript or the GitHub API.
@@ -61,12 +61,13 @@ Open `http://127.0.0.1:8765/`.
 ```bash
 node --check app.js
 node --check language.js
+node --check features.js
 node --test tests/*.test.cjs
 python3 scripts/validate.py
 python3 scripts/package.py
 ```
 
-Tests cover illustration modes and accessibility, browser languages, manual overrides, stored preferences, blocked storage, redirect anchors, both translated pages, localized release messages, API failures and malicious download URLs. Validation checks both pages, the single language button and its target language, matching section anchors, local links, documentation links, CSP and pinned Actions.
+Tests cover illustration modes and accessibility, browser languages, manual overrides, stored preferences, blocked storage, redirect anchors, both translated pages, localized release messages, API failures, malicious download URLs, release-history filtering, edited notes and Minsk publication dates. Validation checks both pages, the single language button and its target language, matching section anchors, local links, documentation links, CSP and pinned Actions.
 
 Before merging layout changes, check both languages at 320, 390, 700, 768, 1000, 1280, 1440 and 1920 px, including reduced-motion mode. Confirm readable supporting text (14 px feature descriptions and 11–12 px labels), equal hero buttons and their centered note, aligned navigation, a GitHub logo no taller than its label, and footer link icons that follow the text size. Check that mobile intro lines remain separated, the footer centers cleanly, all three demo modes work, and the page has no horizontal overflow. Review screenshots at their native size; Node tests and HTML validation do not verify visual layout.
 
@@ -76,6 +77,7 @@ Before merging layout changes, check both languages at 320, 390, 700, 768, 1000,
 - `en.html` — full English page.
 - `language.js` — language selection and saved preference.
 - `app.js` — illustration preview modes and localized release lookup.
+- `features.js` — accessible capabilities dialog with Escape, backdrop dismissal and focus restoration. Release history loads automatically from GitHub Releases when the menu opens and refreshes every five minutes while open (up to 30 stable published releases; drafts and prereleases are excluded). Publishing a new app release requires no website redeployment. The embedded history remains available if GitHub fails. Approved localized summaries are reused only when the official release body still matches their SHA-256 snapshot; new or edited notes appear as safe text in the original release language, without installer/download and checksum sections. The pinned capabilities overview is maintained separately in both HTML pages. Dates use Europe/Minsk, based on `published_at`. macOS-only features are labeled explicitly.
 - `styles.css` — shared responsive styling, language selector and grizzly hero lighting/fade.
 - `assets/grizzly-hero.png` — transparent realistic bear illustration used only in the hero; `assets/icon.png` remains the original app emblem.
 - `scripts/`, `tests/` — validation, packaging and regression tests.
@@ -84,7 +86,7 @@ Before merging layout changes, check both languages at 320, 390, 700, 768, 1000,
 
 ## Deployment and maintenance
 
-GitHub Actions publishes to GitHub Pages after a change reaches `main`; PR code cannot deploy. The `github-pages` environment permits only `main`. The artifact contains exactly nine allowlisted resources: `index.html`, `en.html`, `styles.css`, `app.js`, `language.js`, `assets/icon.png`, `assets/grizzly-hero.png`, `.nojekyll` and `.well-known/security.txt`. Source documentation, tests and repository configuration are excluded.
+GitHub Actions publishes to GitHub Pages after a change reaches `main`; PR code cannot deploy. The `github-pages` environment permits only `main`. The artifact contains exactly ten allowlisted resources: `index.html`, `en.html`, `styles.css`, `app.js`, `language.js`, `features.js`, `assets/icon.png`, `assets/grizzly-hero.png`, `.nojekyll` and `.well-known/security.txt`. Source documentation, tests and repository configuration are excluded.
 
 Changes go through a pull request with required Site checks and JavaScript security checks, an up-to-date branch and resolved conversations. Force pushes and deletion of `main` are blocked, including for administrators. An independent approval is not mandatory for this single-maintainer project; enable it when a team joins.
 
