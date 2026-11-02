@@ -6,7 +6,7 @@
 
 [![Validate](https://github.com/Slipcast-dev/grizzly-website/actions/workflows/validate.yml/badge.svg)](https://github.com/Slipcast-dev/grizzly-website/actions/workflows/validate.yml)
 [![CodeQL](https://github.com/Slipcast-dev/grizzly-website/actions/workflows/codeql.yml/badge.svg)](https://github.com/Slipcast-dev/grizzly-website/actions/workflows/codeql.yml)
-[![Grizzly Proprietary License](https://img.shields.io/badge/license-Proprietary-86c9b2)](LICENSE)
+[![License: Proprietary](https://img.shields.io/badge/license-Proprietary-86c9b2)](LICENSE)
 
 A bilingual Russian/English website for **Grizzly**, an app for Markdown, text and source code (syntax highlighting, tags, spell check, in-app updates) on macOS and Windows.
 
@@ -14,7 +14,7 @@ A bilingual Russian/English website for **Grizzly**, an app for Markdown, text a
 
 ## Features
 
-![Website features: two languages, direct installer downloads, a static MIT-licensed site without accounts or tracking](docs/banners/features-en.svg)
+![Website features: two languages, direct installer downloads, a static site under a proprietary license without accounts or tracking](docs/banners/features-en.svg)
 
 - Complete Russian and English pages, including the illustrative app demo, accessible labels, metadata and release-status messages.
 - One globe + EN/RU language button in the header, styled like the site's outlined buttons and visible on desktop and mobile.
@@ -92,7 +92,7 @@ Changes go through a pull request with required Site checks and JavaScript secur
 
 Actions use full commit SHA pins and minimum permissions; checkout does not persist credentials. Dependabot checks Actions weekly and CodeQL scans JavaScript on changes and weekly.
 
-When an app release is published, update the verified fallback links in **both** HTML pages as well. They currently point to the checked assets of **v1.3.0**. Runtime API lookup can select newer releases, but cannot update the static fallback. Keep RU/EN content, metadata and both documentation versions in sync. Verify release asset names before changing these URLs; do not replace working installer links with guessed URLs.
+When an app release is published, update the verified fallback links in **both** HTML pages as well. They currently point to the checked assets of **v1.4.2**. Runtime API lookup can select newer releases, but cannot update the static fallback. Keep RU/EN content, metadata and both documentation versions in sync. Verify release asset names before changing these URLs; do not replace working installer links with guessed URLs.
 
 After merging, verify the required checks and the Deploy Pages workflow for the merged commit, then compare the public RU/EN pages and stylesheet with that commit. Publishing a cloud development environment is separate from publishing the website. Remove completed branches only after confirming their changes are preserved in `main`; squash merges require a content comparison, not just an ancestry check. Keep branches with open PRs or unique work.
 
@@ -106,4 +106,4 @@ Read [Security](SECURITY.md), [Contributing](CONTRIBUTING.md) and [Code of condu
 
 ## License and credits
 
-[Grizzly Proprietary License](LICENSE) © 2026 Slipcast-dev. App icon: [Grizzly](https://github.com/Slipcast-dev/Grizzly). Apple/Intel and Windows platform SVGs: [Simple Icons](https://github.com/simple-icons/simple-icons), CC0 (Windows SVG from version 11.0.0). Trademarks belong to their respective owners; platform logos identify supported systems.
+[Grizzly Proprietary License](LICENSE) © 2026 Slipcast-dev. Modifying or redistributing without the author's written consent is prohibited. App icon: [Grizzly](https://github.com/Slipcast-dev/Grizzly). Apple/Intel and Windows platform SVGs: [Simple Icons](https://github.com/simple-icons/simple-icons), CC0 (Windows SVG from version 11.0.0). Trademarks belong to their respective owners; platform logos identify supported systems.

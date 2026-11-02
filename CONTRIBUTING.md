@@ -13,7 +13,7 @@ Do not add tokens, `.env` files, personal data, executable installers or app fil
 
 Do not change workflow permissions without justification. Pin Actions to full SHAs; never run contributor code through `pull_request_target`. Language selection must keep working when localStorage is blocked and must never redirect to an arbitrary URL.
 
-Required checks and discussion resolution must complete before merge. Contributions use the project's MIT license. Follow the [code of conduct](CODE_OF_CONDUCT.md).
+Required checks and discussion resolution must complete before merge. Contributions are accepted under the contribution terms of the Grizzly Proprietary License (section 4). Follow the [code of conduct](CODE_OF_CONDUCT.md).
 
 For layout changes, check widths from 320 px to desktop in both languages, including reduced-motion mode. Confirm that the page has no horizontal overflow, hero buttons have equal dimensions, and the note is centered below them. Use decorative inline SVG with `aria-hidden="true"` and `focusable="false"` for icons; avoid font-dependent arrow symbols.
 
