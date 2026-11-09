@@ -45,7 +45,7 @@ test('translated snapshot identities change when the official notes change', asy
   assert.notEqual(await hashReleaseBody('abc'), await hashReleaseBody('abcd'));
   for (const name of ['index.html', 'en.html']) {
     const html = fs.readFileSync(path.join(__dirname, '..', name), 'utf8');
-    assert.equal([...html.matchAll(/data-release-body-sha256="[a-f0-9]{64}"/g)].length, 1);
+    assert.equal([...html.matchAll(/data-release-body-sha256="[a-f0-9]{64}"/g)].length, 2);
   }
 });
 test('release API uses bounded public endpoint, no credentials, redirect rejection and cache bypass', async () => {
